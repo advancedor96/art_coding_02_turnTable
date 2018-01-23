@@ -29,16 +29,37 @@ for( let i=0;i<num;i++){
 
    ctx.restore();
 }
-
+getDeg = (str) =>{
+	let tmp = str.substring(   str.indexOf('(')+1, str.indexOf(')')-3   );
+	tmp = parseInt(tmp, 10); 
+	// tmp = tmp % 360;
+	return tmp; 
+}
 start = ()=>{
-   let mycanvas = document.querySelector('#myCanvas');
-   mycanvas.style.transform = "none";
+	let mycanvas = document.querySelector('#myCanvas');
+	
 
-   var randommuil = Math.random(1000)*1000+1;
-   console.log(randommuil);
+	//抓現在的角度   /360取餘數，設回去。再加亂數
+	let str = mycanvas.style.transform;
+	let newDeg = getDeg(str);
+	console.log('newDeg',newDeg);
+
+	//設回去
+	// mycanvas.style.transition = "none"; //必須先歸0
+	// mycanvas.style.transform = `rotate(${newDeg}deg)`;
+
+	//再加亂數
+	var randommuil = Math.floor( Math.random(10000)*10000 )+1000;//這裡容易導致爆炸喔
+	mycanvas.style.transition = "all 3s ease-in-out"; 
+	mycanvas.style.transform = `rotate(${newDeg + randommuil}deg)`;
+
+
+
+
+   // var randommuil = Math.floor( Math.random(1000)*1000 )+1;
+   // console.log(randommuil);
    
-   mycanvas.style.transition = "all 3s linear";
-   mycanvas.style.transform = "rotate(2780deg)";
+   // mycanvas.style.transform = "rotate(2780deg)";
 }
 
 
