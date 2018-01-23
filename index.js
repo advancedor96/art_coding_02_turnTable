@@ -1,7 +1,7 @@
 let mycanvas = document.querySelector("#myCanvas");
 // let c = document.getElementById('myCanvas');
 let ctx = mycanvas.getContext("2d");
-let num = 5;
+let num = 2;
 
 for( let i=0;i<num;i++){
    ctx.save();
@@ -11,20 +11,28 @@ for( let i=0;i<num;i++){
    ctx.rotate(2 * Math.PI / num * i);
    ctx.arc(0, 0, 250, 0,  2 * Math.PI / num);
 
-   ctx.fillStyle = '#b0e0e6';
-   ctx.fill();
+	if(i==0){
+		ctx.fillStyle = '#f26048';
+		ctx.fill();
+	}
+   if(i==1){
+		ctx.fillStyle = '#48b475';
+		ctx.fill();
+   }
+
    ctx.lineWidth = 2;
    ctx.strokeStyle = 'black';
    ctx.lineTo(0, 0);
    ctx.stroke();
 
    ctx.fillStyle = '#fff';
-   ctx.font = '18px sans-serif';
+   ctx.font = '25px sans-serif';
    if(i==0){
-      ctx.fillText('1', 65, 55);
+		ctx.fillText('做', 65, 55);
+
    }
    if(i==1){
-      ctx.fillText('2', 65, 55);
+      ctx.fillText('不做', 65, 55);
    }
 
    ctx.restore();
@@ -41,17 +49,26 @@ start = ()=>{
 
 	//抓現在的角度   /360取餘數，設回去。再加亂數
 	let str = mycanvas.style.transform;
-	let newDeg = getDeg(str);
-	console.log('newDeg',newDeg);
+	let currentDeg = getDeg(str);
+
+	if(currentDeg >=360050000){
+		console.log('超過360050000了，把角度%3600');
+		currentDeg %= 360;
+
+		mycanvas.style.transition = "none"; 
+		mycanvas.style.transform = `rotate(${currentDeg}deg)`;
+		return false;
+	}
+
 
 	//設回去
 	// mycanvas.style.transition = "none"; //必須先歸0
 	// mycanvas.style.transform = `rotate(${newDeg}deg)`;
 
 	//再加亂數
-	var randommuil = Math.floor( Math.random(10000)*10000 )+1000;//這裡容易導致爆炸喔
+	var randommuil = Math.floor( Math.random(10000)*10000 )+1000;
 	mycanvas.style.transition = "all 3s ease-in-out"; 
-	mycanvas.style.transform = `rotate(${newDeg + randommuil}deg)`;
+	mycanvas.style.transform = `rotate(${currentDeg + randommuil}deg)`;
 
 
 
