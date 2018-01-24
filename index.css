@@ -17,9 +17,28 @@
 	 border-radius: 50%;
 	 font-size: 22px;
 	 cursor: pointer;
+	 border: 0px solid;
+	 background-color: white;
 
 }
-
+.btn:focus{
+	outline: none;
+	background-color: #e2e2e2;
+}
+.triangle{
+	width: 0;
+	height: 0;
+	border-width: 0 32px 62px;
+	border-style: solid;
+	border-color: transparent transparent white;
+	position: absolute;
+	top: -60%;
+	left: 4%;
+}
+.btn:focus .triangle{
+	outline: none;
+	border-bottom-color: #e2e2e2;
+}
 
 
 
