@@ -19,6 +19,7 @@
 	 cursor: pointer;
 	 border: 0px solid;
 	 background-color: white;
+	 box-shadow: 0 2px 13px 1px black;
 
 }
 .btn:focus{
