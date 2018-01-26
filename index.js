@@ -3,6 +3,15 @@ let mycanvas = document.querySelector("#myCanvas");
 let ctx = mycanvas.getContext("2d");
 let num = 2;
 
+
+vminToPx = (vmin) => {
+	const result = Math.min(window.innerWidth, window.innerHeight) * vmin / 100;
+	console.log('result:',result);
+	return result;
+}
+mycanvas.style.width = '90vmin';
+mycanvas.style.height = '90vmin';
+
 for( let i=0;i<num;i++){
    ctx.save();
    ctx.beginPath();
@@ -45,7 +54,8 @@ getDeg = (str) =>{
 }
 start = ()=>{
 	let mycanvas = document.querySelector('#myCanvas');
-	
+
+	// mycanvas.style.transition = "all 3s ease-in-out"; 
 
 	//抓現在的角度   /360取餘數，設回去。再加亂數
 	let str = mycanvas.style.transform;
@@ -78,7 +88,6 @@ start = ()=>{
    
    // mycanvas.style.transform = "rotate(2780deg)";
 }
-
 
 
 // $('#btn').click(function(){

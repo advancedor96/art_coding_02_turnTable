@@ -1,11 +1,18 @@
 #myCanvas{
-	/* animation-name: start; */
-	/* animation-duration: 3s; */
+	display: block;
+	margin: auto auto;
+}
+*{
+	box-sizing: border-box;
+}
+body{
+	margin: 0;
 }
 .turnTable{
 	position: relative;
-	width: 504px;
-	height: 504px;
+	width: 100vmin;
+	height: 100vmin;
+	padding: 5vmin;
 }
 .btn{
 	position: absolute;
